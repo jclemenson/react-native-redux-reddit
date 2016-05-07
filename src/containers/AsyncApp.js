@@ -23,8 +23,6 @@ class AsyncApp extends Component {
   }
 
   componentDidMount() {
-    console.log('componentDidMount')
-    console.log(this.props)
     const { dispatch, selectedSubreddit } = this.props;
     dispatch(fetchPostsIfNeeded(selectedSubreddit));
   }
@@ -98,12 +96,7 @@ const styles = StyleSheet.create({
 
 function mapStatesToProps(state) {
   const { selectedSubreddit, postsBySubreddit } = state;
-
-
-  console.log(`postsBySubreddit[selectedSubreddit]`);
-  // console.log(postsBySubreddit[selectedSubreddit]);
-
-  let {
+  const {
     isFetching,
     lastUpdated,
     items: posts,
@@ -111,18 +104,6 @@ function mapStatesToProps(state) {
     isFetching: false,
     items: [],
   }
-
-  console.log(posts)
-
-  // if (typeof posts == 'undefined') {
-  //   posts = []
-  // }
-  //
-  // if (typeof isFetching == 'undefined') {
-  //   isFetching = true;
-  // }
-
-  // console.log(`posts: ${posts}`)
 
   return {
     selectedSubreddit,
